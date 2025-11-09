@@ -40,6 +40,11 @@ conda activate book-gen
 # Install dependencies
 pip install -r requirements.txt
 # Fill the .env file as done in the example and then run 
+# Update the 'excel_fp' in async main of bookgeneration.py to give your own excel file
 python -m app.models.bookgeneration
+```
+## Important
+The **instruction** and **update lines** in the terminal will guide you completely on how to make changes in excel.
+  
 
 
