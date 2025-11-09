@@ -16,8 +16,6 @@ from langgraph.graph.message import add_messages
 from langgraph.checkpoint.memory import InMemorySaver
 import openpyxl
 from dotenv import load_dotenv
-
-# New import to get the database client
 from app.utils.db_getter import get_db
 
 load_dotenv(override=True)
@@ -31,7 +29,7 @@ class State(TypedDict):
     outline: str
     notes_on_outline_after: Optional[str]
     chapters: List[str]
-    chapter_summaries: List[Dict[str, Any]]  # Added to store chapter summaries for DB
+    chapter_summaries: List[Dict[str, Any]]  
     current_chapter_number: int
     user_decision: str
     summary: str
@@ -41,9 +39,9 @@ class State(TypedDict):
 
 
 class BookGeneration:
-    def __init__(self):
+    def __init__(self, excel_fp ):
         self.llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
-        self.excel_filename = "Book Generation.xlsx"
+        self.excel_filename = excel_fp
         self.db = get_db()  # Initialize database client
         
         self.sender_email = os.getenv("SENDER_EMAIL")
@@ -420,7 +418,7 @@ class BookGeneration:
         return {}
 
 async def main():
-    book_gen = BookGeneration()
+    book_gen = BookGeneration("Book Generation.xlsx")
     config = {"configurable": {"thread_id": "interactive-book-gen-thread-v5"}} 
     initial_state = {"messages": [HumanMessage(content="Start")]}
     
