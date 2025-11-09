@@ -1,0 +1,13 @@
+pydantic_settings
+loguru==0.7.3
+supabase
+psutil
+pandas
+openpyxl
+langchain-google-genai==2.1.12
+langchain==0.3.27
+langchain-community==0.3.30
+langgraph==0.6.8
+streamlit
+pymongo
+
