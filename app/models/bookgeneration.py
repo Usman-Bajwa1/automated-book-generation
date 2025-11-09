@@ -16,8 +16,6 @@ from langgraph.graph.message import add_messages
 from langgraph.checkpoint.memory import InMemorySaver
 import openpyxl
 from dotenv import load_dotenv
-
-# New import to get the database client
 from app.utils.db_getter import get_db
 
 load_dotenv(override=True)
@@ -31,7 +29,7 @@ class State(TypedDict):
     outline: str
     notes_on_outline_after: Optional[str]
     chapters: List[str]
-    chapter_summaries: List[Dict[str, Any]]  # Added to store chapter summaries for DB
+    chapter_summaries: List[Dict[str, Any]]  
     current_chapter_number: int
     user_decision: str
     summary: str
