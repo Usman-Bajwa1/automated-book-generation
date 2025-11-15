@@ -25,3 +25,9 @@ class DataBaseSettings(BaseSettings):
 
 class BookGenerationSettings(BaseSettings):
     GOOGLE_API_KEY: str
+
+class GoogleSpreadSheets(BaseSettings):
+    GOOGLE_CREDENTIALS_FP: str
+    GOOGLE_SHEET_ID: str  
+    GOOGLE_DRIVE_FOLDER_ID: str
+    GOOGLE_DOC_ID: str  
